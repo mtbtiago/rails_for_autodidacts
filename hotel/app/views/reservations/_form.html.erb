@@ -1,0 +1,43 @@
+<%= form_for(@reservation) do |f| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+
+      <ul>
+      <% @reservation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :start %><br>
+    <%= f.date_select :start %>
+  </div>
+  <div class="field">
+    <%= f.label :end %><br>
+    <%= f.date_select :end %>
+  </div>
+  <div class="field">
+    <%= f.label :room_type %><br>
+    <%#= f.text_field :room_type %>
+    <%= f.select :room_type, options_for_select(['single room', 'double room']) %>
+  </div>
+  <div class="field">
+    <%= f.label :gest_name1 %><br>
+    <%= f.text_field :gest_name1 %>
+  </div>
+  <div class="field" id='second_name'>
+    <%= f.label :gest_name2 %><br>
+    <%= f.text_field :gest_name2 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<div class="">
+  <%= link_to "Greeting", '#', onclick: "alert('Hello world!'); return false", class: "nav_link" %>
+
+</div>
